@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bundles xmlns="http://www.jossv.com/model/bundle">
+    <bundle id="example">
+        <entity-service name="query" method="get" refEntity="personEntity">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+                <rule name="default123" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="query2" method="get" refEntity="personEntity">
+            <rules>
+                <rule name="default" ref-condition="removeById"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="query3" method="get" refEntity="personEntity">
+            <rules>
+                <rule name="default" ref-condition="listWithPage"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="query4" method="get" refEntity="personEntity">
+            <rules>
+                <rule name="default" ref-condition="listWithOne"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="add" refEntity="personEntity" method="post">
+            <rules>
+                <rule name="default" ref-validator="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="remove" refEntity="personEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="removeById"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="update" refEntity="personEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="removeById"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="familyPost" refEntity="family" method="post">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="familyPut" refEntity="family" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="roleMgr" refEntity="roleEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <script-service name="test" method="get" importTableOrEntity="roleEntity, family">
+            <rules>
+                <rule name="default">
+                    <script>
+                        getDao('roleEntity').remove(getCondition('findById'));
+                        getDao('roleEntity').create()
+                    </script>
+                </rule>
+            </rules>
+        </script-service>
+        <!--
+        <table-service name="familyP" refTable="family" method="post">
+            <rules>
+                <rule name="">
+                    <condition></condition>
+                    <data-range></data-range>
+                    <validator></validator>
+                </rule>
+            </rules>
+        </table-service>
+        -->
+    </bundle>
+</bundles>

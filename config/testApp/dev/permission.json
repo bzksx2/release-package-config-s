@@ -1,0 +1,75 @@
+{
+  "apps": {
+    "test": {
+      "dropAndCreate": true,
+      "member": [
+        {
+          "username": "sysadmin",
+          "password": "$2a$10$08ptuKda11r2bz0SSKV7Be5WB2hI2jD.USjR8mTIoTvm1GDwF69SO",
+          "nickname": "sysadmin",
+          "enabled": 1
+        }
+      ],
+      "page": [
+        {
+          "path": "/index.html",
+          "templatePath": "index.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/login.html",
+          "templatePath": "login.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        }
+      ],
+      "roleGroup": [
+        {
+          "name": "sysadminGroup",
+          "refRole": [
+            "ROLE_CONFIG_ADMIN"
+          ],
+          "defaultMembers": [
+            "sysadmin"
+          ]
+        }
+      ],
+      "role": [
+        {
+          "name": "anonymous",
+          "refPages": [
+            "/login.html"
+          ],
+          "refApis": [
+            {
+              "bundle": "example",
+              "service": "roleMgr",
+              "rule": "default"
+            }
+          ]
+        },
+        {
+          "name": "ROLE_CONFIG_ADMIN",
+          "refPages": [
+            "/index.html"
+          ],
+          "refApis": [
+            {
+              "bundle": "example",
+              "service": "query",
+              "rule": "default"
+            },
+            {
+              "bundle": "example",
+              "service": "add",
+              "rule": "default"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

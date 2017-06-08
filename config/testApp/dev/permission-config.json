@@ -1,0 +1,182 @@
+{
+  "apps": {
+    "configServer": {
+      "dropAndCreate": true,
+      "member": [
+        {
+          "username": "sysadmin",
+          "password": "$2a$10$08ptuKda11r2bz0SSKV7Be5WB2hI2jD.USjR8mTIoTvm1GDwF69SO",
+          "nickname": "sysadmin",
+          "enabled": 1
+        }
+      ],
+      "page": [
+        {
+          "path": "/index.html",
+          "templatePath": "index.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/appMgr.html",
+          "templatePath": "appMgr.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/appPropertiesMgr.html",
+          "templatePath": "appPropertiesMgr.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/memberMgr.html",
+          "templatePath": "memberMgr.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/roleGroupMgr.html",
+          "templatePath": "roleGroupMgr.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/roleMgr.html",
+          "templatePath": "roleMgr.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/login.html",
+          "templatePath": "login.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        },
+        {
+          "path": "/config.html",
+          "templatePath": "config.html",
+          "templateType": "freemarker",
+          "items": [
+          ]
+        }
+      ],
+      "roleGroup": [
+        {
+          "name": "sysadminGroup",
+          "refRole": [
+            "ROLE_CONFIG_ADMIN"
+          ],
+          "defaultMembers": [
+            "sysadmin"
+          ]
+        }
+      ],
+      "role": [
+        {
+          "name": "anonymous",
+          "refPages": [
+            "/login.html",
+            "/index.html",
+            "/config.html",
+            "/appMgr.html",
+            "/appPropertiesMgr.html",
+            "/memberMgr.html",
+            "/roleGroupMgr.html",
+            "/roleMgr.html"
+          ],
+          "refApis": [
+            {
+              "bundle": "access",
+              "service": "roleMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "appMgr",
+              "rule": "default"
+            },{
+              "bundle": "access",
+              "service": "appPropertiesMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "memberMgr",
+              "rule": "default"
+            },{
+              "bundle": "access",
+              "service": "roleGroupMgr",
+              "rule": "default"
+            },
+
+            {
+              "bundle": "access",
+              "service": "table"
+            },
+            {
+              "bundle": "access",
+              "service": "pagePermissionMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "roleRelPagePermissionMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "apiPermissionMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "roleRelApiPermissionMgr",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "table",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "entity",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "bundle",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "bundleExample",
+              "rule": "default"
+            },
+            {
+              "bundle": "access",
+              "service": "test2",
+              "rule": "default"
+            }
+          ]
+        },
+        {
+          "name": "ROLE_CONFIG_ADMIN",
+          "refPages": [
+            "/index.html"
+          ],
+          "refApis": [
+          ]
+        }
+      ]
+    }
+  }
+}

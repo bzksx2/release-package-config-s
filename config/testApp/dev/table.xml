@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tables xmlns="http://www.jossv.com/model/table">
+
+    <table id="baseTable" tableName="baseTable" virtual="true">
+        <column name="id" type="LONG"/>
+    </table>
+
+    <table id="person" tableName="t_example_person" extends="baseTable">
+        <column name="name" type="STRING"/>
+        <column name="sex" type="INTEGER"/>
+        <column name="fid" type="LONG"/>
+    </table>
+
+    <table id="family" tableName="t_example_family" extends="baseTable">
+        <column name="name" type="STRING"/>
+    </table>
+
+    <table id="car" tableName="t_example_car" extends="baseTable">
+        <column name="brand" type="STRING"/>
+        <column name="price" type="BIG_DECIMAL"/>
+        <column name="pid" type="LONG"/>
+    </table>
+
+
+    <table id="app" tableName="t_app" display="name">
+        <column name="id" type="LONG"/>
+        <column name="name" type="STRING"/>
+    </table>
+
+    <table id="appProperties" tableName="t_app_properties">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="property" type="STRING"/>
+        <column name="value" type="STRING"/>
+    </table>
+
+    <table id="member" tableName="t_member">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="username" type="STRING"/>
+        <column name="password" type="STRING"/>
+        <column name="nickname" type="STRING"/>
+        <column name="accountNonExpired" type="INTEGER"/>
+        <column name="accountNonLocked" type="INTEGER"/>
+        <column name="credentialsNonExpired" type="INTEGER"/>
+        <column name="enabled" type="INTEGER"/>
+    </table>
+
+    <table id="memberRelRoleGroup" tableName="t_member_rel_role_group">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="memberId" type="LONG"/>
+        <column name="groupId" type="LONG"/>
+    </table>
+
+    <table id="roleGroup" tableName="t_role_group">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="pid" type="LONG"/>
+        <column name="name" type="STRING"/>
+    </table>
+
+    <table id="roleGroupRel" tableName="t_role_group_rel_role">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="groupId" type="LONG"/>
+        <column name="roleName" type="STRING"/>
+    </table>
+
+    <table id="role" tableName="t_role">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="name" type="STRING"/>
+    </table>
+
+    <table id="apiPermission" tableName="t_api_permission">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="bundle" type="STRING"/>
+        <column name="service" type="STRING"/>
+        <column name="entityId" type="LONG"/>
+        <column name="method" type="STRING" columnName="_method"/>
+        <column name="pid" type="LONG"/>
+        <column name="type" columnName="_type" type="STRING"/>
+    </table>
+
+    <table id="apiPermissionRule" tableName="t_api_permission_rule">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="apiPermissionId" type="LONG"/>
+        <column name="rule" type="STRING"/>
+        <column name="refCond" type="STRING"/>
+        <column name="refValidator" type="STRING"/>
+        <column name="refDataRange" type="STRING"/>
+    </table>
+
+    <table id="roleRelApiPermission" tableName="t_role_rel_api_permission">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="apiPermissionId" type="LONG"/>
+        <column name="apiPermissionRuleId" type="LONG"/>
+        <column name="roleId" type="LONG"/>
+    </table>
+
+
+    <table id="pagePermission" tableName="t_page_permission">
+        <column name="id" type="LONG"/>
+        <column name="pid" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="label" type="STRING"/>
+        <column name="path" type="STRING"/>
+        <column name="templatePath" type="STRING"/>
+        <column name="templateType" type="STRING"/>
+        <column name="description" type="STRING"/>
+    </table>
+
+
+    <table id="roleRelPagePermission" tableName="t_role_rel_page_permission">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="roleId" type="LONG"/>
+        <column name="pageId" type="LONG"/>
+    </table>
+
+
+    <table id="table" tableName="t_config_table" display="tableId">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="tableId" type="STRING"/>
+        <column name="tableName" type="STRING"/>
+        <column name="label" type="STRING"/>
+        <column name="pkColumn" type="STRING"/>
+        <column name="view" columnName="_view" type="BOOLEAN"/>
+        <column name="virtual" columnName="_virtual" type="BOOLEAN"/>
+        <column name="extends" columnName="_extends" type="STRING"/>
+    </table>
+
+    <table id="tableColumn" tableName="t_config_table_column">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="tableId" type="LONG"/>
+        <column name="columnType" type="STRING"/>
+        <column name="name" type="STRING"/>
+        <column name="unique" columnName="_unique" type="BOOLEAN"/>
+        <column name="nullable" columnName="_nullable" type="BOOLEAN"/>
+        <column name="length" columnName="_length" type="INTEGER"/>
+        <column name="precision" columnName="_precision" type="INTEGER"/>
+        <column name="scale" columnName="_scale" type="INTEGER"/>
+        <column name="label" columnName="_label" type="STRING"/>
+        <column name="columnName" type="STRING"/>
+        <column name="codeNumber" type="STRING"/>
+        <column name="dateFormat" type="STRING"/>
+    </table>
+
+    <!-- id, main, mainAlias, mainCondition -->
+    <!-- relationship -->
+    <!-- conditions -->
+    <table id="entity" tableName="t_config_entity">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="name" type="STRING"/>
+        <column name="mainTableId" type="LONG"/>
+        <column name="mainAlias" type="STRING"/>
+        <column name="mainCondition" type="STRING"/>
+        <column name="label" type="STRING"/>
+    </table>
+
+
+    <table id="entityRelation" tableName="t_config_entity_rel">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="entityId" type="LONG"/>
+        <column name="alias" type="STRING"/>
+        <column name="refObjectId" type="LONG"/>
+        <column name="type" type="STRING"/>
+        <column name="sourceId" type="STRING"/>
+        <column name="targetId" type="STRING"/>
+        <column name="condition" columnName="_condition" type="STRING"/>
+    </table>
+
+    <table id="entityCondition" tableName="t_config_entity_condition" display="name">
+        <column name="id" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="entityId" type="LONG"/>
+        <column name="name" type="STRING"/>
+        <column name="expression" type="STRING"/>
+        <column name="paged" type="BOOLEAN"/>
+        <column name="fetchOne" type="BOOLEAN"/>
+        <column name="withChildren" type="BOOLEAN"/>
+        <column name="auto" columnName="_auto" type="BOOLEAN"/>
+        <column name="count" columnName="_count" type="BOOLEAN"/>
+    </table>
+
+
+    <table id="entityService" tableName="t_config_entity_service" display="name">
+        <column name="id" type="LONG"/>
+        <column name="pid" type="LONG"/>
+        <column name="appId" type="LONG"/>
+        <column name="entityId" type="LONG"/>
+        <column name="name" type="STRING"/>
+        <column name="method" type="STRING" columnName="_method"/>
+        <column name="type" type="STRING" columnName="_type"/><!-- dir | service -->
+    </table>
+
+    <table id="entityServiceRule" tableName="t_config_entity_service_rule">
+        <column name="id" type="LONG"/>
+        <column name="serviceId" type="LONG"/>
+        <column name="name" type="STRING"/>
+        <column name="refCondId" type="LONG"/>
+        <column name="refValidatorId" type="LONG"/>
+        <column name="refDataRangeId" type="LONG"/>
+    </table>
+
+</tables>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<apps xmlns="http://www.jossv.com/model/app">
+
+    <app name="test">
+        <bundles ref="bundle.xml"/>
+        <permissionData ref="permission.json"/>
+    </app>
+
+    <app name="configServer">
+        <bundles ref="bundle-config.xml"/>
+        <permissionData ref="permission-config.json"/>
+    </app>
+
+</apps>

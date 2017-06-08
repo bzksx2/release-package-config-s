@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bundles xmlns="http://www.jossv.com/model/bundle">
+    <bundle id="access">
+
+        <entity-service name="appMgr" refEntity="appEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appMgr" refEntity="appEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appMgr" refEntity="appEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appMgr" refEntity="appEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="appPropertiesMgr" refEntity="appPropertiesEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appPropertiesMgr" refEntity="appPropertiesEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appPropertiesMgr" refEntity="appPropertiesEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="appPropertiesMgr" refEntity="appPropertiesEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="memberMgr" refEntity="memberEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="memberMgr" refEntity="memberEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="memberMgr" refEntity="memberEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="memberMgr" refEntity="memberEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="roleGroupMgr" refEntity="roleGroupEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleGroupMgr" refEntity="roleGroupEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleGroupMgr" refEntity="roleGroupEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleGroupMgr" refEntity="roleGroupEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+
+        <entity-service name="roleMgr" refEntity="roleEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleMgr" refEntity="roleEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleMgr" refEntity="roleEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="roleMgr" refEntity="roleEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+
+        <entity-service name="pagePermissionMgr" refEntity="pagePermissionEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="pagePermissionMgr" refEntity="pagePermissionEntity" method="post">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="pagePermissionMgr" refEntity="pagePermissionEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="pagePermissionMgr" refEntity="pagePermissionEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="roleRelPagePermissionMgr" refEntity="roleRelPagePermissionEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="apiPermissionMgr" refEntity="apiPermissionEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="apiPermissionMgr" refEntity="apiPermissionEntity" method="post">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="apiPermissionMgr" refEntity="apiPermissionEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="roleRelApiPermissionMgr" refEntity="roleRelApiPermissionEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+
+        <entity-service name="table" refEntity="tableEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="table" refEntity="tableEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="table" refEntity="tableEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="table" refEntity="tableEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="entity" refEntity="entityEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="entity" refEntity="entityEntity" method="post">
+            <rules>
+                <rule name="default"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="entity" refEntity="entityEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+        <entity-service name="entity" refEntity="entityEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="bundle" refEntity="entityServiceEntity" method="get">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="bundle" refEntity="entityServiceEntity" method="post">
+            <rules>
+                <rule name="default" ref-condition="list"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="bundle" refEntity="entityServiceEntity" method="put">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="bundle" refEntity="entityServiceEntity" method="delete">
+            <rules>
+                <rule name="default" ref-condition="findByIds"></rule>
+            </rules>
+        </entity-service>
+
+        <entity-service name="bundleExample" refEntity="entityServiceEntity" method="get">
+            <rules>
+                <rule name="default" ref-service="example"></rule>
+            </rules>
+        </entity-service>
+
+        <script-service name="test2" method="get">
+            <rules>
+                <rule name="default">
+                    <script>
+                        println 'service-----'
+                        'xx'
+                        getService('configServer','access','bundle', 'get').execute('get','default', parameters);
+                    </script>
+                </rule>
+            </rules>
+        </script-service>
+
+    </bundle>
+</bundles>

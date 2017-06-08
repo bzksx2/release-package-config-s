@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entities xmlns="http://www.jossv.com/model/entity">
+
+    <entity id="personEntity" main="person" mainAlias="p" mainCondition="1=1 and ${p.id} is not null">
+        <relationship alias="cars" relObjectId="car" type="child" condition="${cars.pid} = ${p.id}" sourceId="cars.pid"
+                      targetId="p.id"/>
+        <relationship alias="family" relObjectId="family" type="ref" sourceId="family.id"
+                      targetId="p.fid"></relationship>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true"/>
+            <condition name="listWithPage" expression="${p.id} is not null" paged="true" fetchOne="false"/>
+            <condition name="listWithOne" expression="1=1" paged="true" fetchOne="true"/>
+            <condition name="removeById" expression="${p.id} = :pid" paged="false" fetchOne="false">
+                <validator>
+                    {
+                    pid:'required'
+                    }
+                </validator>
+            </condition>
+        </conditions>
+        <validators>
+            <validator name="default">
+                {
+                p:{'nested_object':{
+                'sex':'required'
+                }
+                }
+                }
+            </validator>
+        </validators>
+
+    </entity>
+
+
+    <entity id="roleEntity" main="role" mainAlias="role" mainCondition="1=1 and ${role.id} is not null"
+            updateChildrenMode="dropAndCreate">
+        <relationship alias="app" relObjectId="app" type="ref" sourceId="app.id"
+                      targetId="role.appId"></relationship>
+
+        <relationship alias="rRelp" relObjectId="roleRelPagePermission" type="child" sourceId="rRelp.roleId"
+                      targetId="role.id"></relationship>
+
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${role.id} in (:ids)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="appEntity" main="app" mainAlias="app" mainCondition="1=1 and ${app.id} is not null" display="app.name">
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${app.id} in (:ids)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="appPropertiesEntity" main="appProperties" mainAlias="ap" mainCondition="1=1 and ${ap.id} is not null">
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${ap.id} in (:ids)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="memberEntity" main="member" mainAlias="member" mainCondition="1=1 and ${member.id} is not null"
+            updateChildrenMode="dropAndCreate">
+        <relationship alias="mRelrg" relObjectId="memberRelRoleGroup" type="child" sourceId="mRelrg.memberId"
+                      targetId="member.id"></relationship>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${member.id} in (:ids)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="roleGroupEntity" main="roleGroup" mainAlias="roleGroup"
+            mainCondition="1=1 and ${roleGroup.id} is not null" updateChildrenMode="dropAndCreate">
+        <relationship alias="rgRelr" relObjectId="roleGroupRel" type="child" sourceId="rgRelr.groupId"
+                      targetId="roleGroup.id"></relationship>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${roleGroup.id} in (:ids)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="pagePermissionEntity" main="pagePermission" mainAlias="pagePermission"
+            mainCondition="1=1 and ${pagePermission.id} is not null">
+        <relationship alias="children" relObjectId="pagePermissionEntity" type="child"
+                      sourceId="children.pagePermission.pid"
+                      targetId="pagePermission.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${pagePermission.id} in (:id)" paged="false" fetchOne="false"/>
+        </conditions>
+    </entity>
+
+
+    <entity id="roleRelPagePermissionEntity" main="roleRelPagePermission" mainAlias="roleRelPagePermission"
+            mainCondition="1=1 and ${roleRelPagePermission.id} is not null">
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+        </conditions>
+    </entity>
+
+    <entity id="apiPermissionEntity" main="apiPermission" mainAlias="apiPermission"
+            mainCondition="1=1 and ${apiPermission.id} is not null">
+        <relationship alias="children" relObjectId="apiPermissionEntity2" type="child"
+                      sourceId="children.apiPermission2.pid"
+                      targetId="apiPermission.id"/>
+        <relationship alias="rules" relObjectId="apiPermissionRule" type="child" sourceId="rules.apiPermissionId"
+                      targetId="apiPermission.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+        </conditions>
+    </entity>
+
+    <entity id="apiPermissionEntity2" main="apiPermission" mainAlias="apiPermission2">
+        <relationship alias="rules" relObjectId="apiPermissionRule" type="child" sourceId="rules.apiPermissionId"
+                      targetId="apiPermission2.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+        </conditions>
+    </entity>
+
+    <entity id="roleRelApiPermissionEntity" main="roleRelApiPermission" mainAlias="roleRelApiPermission"
+            mainCondition="1=1 and ${roleRelApiPermission.id} is not null">
+        <relationship alias="role" relObjectId="role" type="ref" sourceId="role.id"
+                      targetId="roleRelApiPermission.roleId"/>
+        <relationship alias="api" relObjectId="apiPermission" type="ref" sourceId="api.id"
+                      targetId="roleRelApiPermission.apiPermissionId"/>
+        <relationship alias="apiRule" relObjectId="apiPermissionRule" type="ref" sourceId="apiRule.id"
+                      targetId="roleRelApiPermission.apiPermissionRuleId"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+        </conditions>
+    </entity>
+
+
+    <entity id="tableEntity" main="table" mainAlias="t" mainCondition="">
+        <relationship alias="columns" relObjectId="tableColumn" type="child" sourceId="columns.tableId"
+                      targetId="t.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByIds" expression="${t.id} in (:id)" paged="false" withChildren="true"
+                       fetchOne="false"/>
+        </conditions>
+    </entity>
+
+    <entity id="entityEntity" main="entity" mainAlias="entity">
+        <relationship alias="tbl" relObjectId="table" type="ref" sourceId="tbl.id"
+                      targetId="entity.mainTableId"/>
+        <relationship alias="rels" relObjectId="entityRelation" type="child" sourceId="rels.entityId"
+                      targetId="entity.id"/>
+        <relationship alias="conds" relObjectId="entityCondition" type="child" sourceId="conds.entityId"
+                      targetId="entity.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" auto="true"
+                       withChildren="true"/>
+            <condition name="findByIds" expression="${entity.id} in (:id)" paged="false" fetchOne="false"
+                       withChildren="true"/>
+        </conditions>
+    </entity>
+
+    <entity id="entityServiceEntity" main="entityService" mainAlias="service">
+        <relationship alias="items" relObjectId="entityServiceEntity2" type="child"
+                      sourceId="items.service2.pid"
+                      targetId="service.id"/>
+        <relationship alias="rules" relObjectId="entityServiceRuleEntity" type="child"
+                      sourceId="rules.rule.serviceId"
+                      targetId="service.id"/>
+        <relationship alias="entity" relObjectId="entity" type="ref" sourceId="service.entityId"
+                      targetId="entity.id"/>
+        <relationship alias="app" relObjectId="app" type="ref" sourceId="app.id"
+                      targetId="service.appId"/>
+        <relationship alias="bundle" relObjectId="entityService" type="ref" sourceId="bundle.id"
+                      targetId="service.pid"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" auto="true"
+                       withChildren="true"/>
+            <condition name="findByIds" expression="${service.id} in (:id)" paged="false" fetchOne="false"
+                       withChildren="true"/>
+        </conditions>
+        <services>
+            <service name="example" type="groovy">
+                return get("findByIds")
+            </service>
+        </services>
+    </entity>
+
+    <entity id="entityServiceEntity2" main="entityService" mainAlias="service2">
+        <relationship alias="items" relObjectId="entityServiceEntity" type="child"
+                      sourceId="items.service.pid"
+                      targetId="service2.id"/>
+        <relationship alias="rules" relObjectId="entityServiceRuleEntity" type="child"
+                      sourceId="rules.rule.serviceId"
+                      targetId="service2.id"/>
+        <relationship alias="entity" relObjectId="entity" type="ref" sourceId="service2.entityId"
+                      targetId="entity.id"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" auto="true"
+                       withChildren="true"/>
+            <condition name="findByIds" expression="${service.id} in (:id)" paged="false" fetchOne="false"
+                       withChildren="true"/>
+        </conditions>
+    </entity>
+
+    <entity id="entityServiceRuleEntity" main="entityServiceRule" mainAlias="rule">
+        <relationship alias="cond" relObjectId="entityCondition" type="ref" sourceId="cond.id"
+                      targetId="rule.refCondId"/>
+
+    </entity>
+
+    <!--
+    <entity id="apiPermissionEntity" main="apiPermission" mainAlias="api">
+        <relationship alias="rules" relObjectId="apiPermissionRule" type="child"
+                      sourceId="rules.apiPermissionId"
+                      targetId="api.id"/>
+        <relationship alias="app" relObjectId="appEntity" type="ref" sourceId="app.app.id"
+                      targetId="api.appId"/>
+        <conditions>
+            <condition name="list" expression="1=1" paged="false" fetchOne="false" auto="true"
+                       withChildren="true"/>
+        </conditions>
+    </entity>
+    -->
+
+    <!-- id, main, mainAlias, mainCondition -->
+    <!-- relationship -->
+    <!-- conditions -->
+</entities>
