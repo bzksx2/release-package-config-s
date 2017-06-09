@@ -24,4 +24,4 @@ docker run --name rdb -d redis
 
 #docker run --link db:mysql --link rdb:redis -it -p 80:80  jossv:latest
 
-docker run --link db:mysql --link rdb:redis -d -p 80:80  jossv:latest
+docker run --name app --link db:mysql --link rdb:redis -it -d -p 80:80  jossv:latest
