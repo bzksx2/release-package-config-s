@@ -158,6 +158,12 @@
             </rules>
         </entity-service>
 
+        <entity-service name="roleRelApiPermissionMgr" refEntity="roleRelApiPermissionEntity" method="put">
+            <rules>
+                <rule name="default" ref-service="deleteAndUpdateByRuleId"></rule>
+            </rules>
+        </entity-service>
+
 
         <entity-service name="table" refEntity="tableEntity" method="get">
             <rules>

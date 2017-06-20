@@ -129,7 +129,14 @@
                       targetId="roleRelApiPermission.apiPermissionRuleId"/>
         <conditions>
             <condition name="list" expression="1=1" paged="false" fetchOne="false" withChildren="true" auto="true"/>
+            <condition name="findByRuleIds" expression="${roleRelApiPermission.roleId} = :roleId" paged="false" fetchOne="false" withChildren="true" auto="true"/>
         </conditions>
+        <services>
+            <service name="deleteAndUpdateByRuleId" type="groovy">
+                delete("findByRuleIds");
+                post();
+            </service>
+        </services>
     </entity>
 
 
