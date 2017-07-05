@@ -1,0 +1,1 @@
+docker stop app && docker rm app && docker run --name app --link db:mysql --link rdb:redis -d -p 80:80  jossv:latest
